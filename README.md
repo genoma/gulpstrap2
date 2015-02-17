@@ -6,7 +6,7 @@ A pretty smart frontend complete tool to develop faster and better, fully extens
 
 ## Install
 
-Clone the repo, add your branch and your own remote and you're pretty much ready to develop your own web app.
+Clone the repo than `$ npm install` - `$ bower install` and you're pretty much ready to build your own web app
 
 ## Howto
 
