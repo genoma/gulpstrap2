@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.coffee"],"names":[],"mappings":"AAAA,CAAA,CAAE,SAAA,GAAA;SACA,OAAO,CAAC,GAAR,CAAY,GAAZ,EADA;AAAA,CAAF,CAAA,CAAA","file":"app.js","sourcesContent":["$ ->\n  console.log \"G\"\n"],"sourceRoot":"/source/"}
