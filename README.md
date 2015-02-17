@@ -1,6 +1,6 @@
 [Bootstrap](http://getbootstrap.com/) on [Bower](http://bower.io/) and [Gulp](http://gulpjs.com/)
 ===========================================================================================================================
-v0.0.1
+v0.0.2
 
 A pretty smart frontend complete tool to develop faster and better, fully extensible with Bower (contains Angular, jQuery, the same Bootstrap), easily deployable with Gulp (support for Less, Coffeescript, Sourcemaps) and integrated with [BrowserSync](http://www.browsersync.io/).
 
