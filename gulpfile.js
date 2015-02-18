@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
+var filter = require('gulp-filter');
 var del = require('del');
 
 // compile CoffeeScript
@@ -50,6 +51,7 @@ gulp.task('less', function() {
     .pipe($.rename('app.css'))
     .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('./css/'))
+    .pipe(filter('**/*.css'))
     .pipe(browserSync.reload({stream:true}))
 });
 
