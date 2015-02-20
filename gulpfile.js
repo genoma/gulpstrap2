@@ -56,12 +56,12 @@ gulp.task('less', function() {
 });
 
 // Clean the dist folder
-gulp.task('clean', function() {
+gulp.task('clean', function(cb) {
    return del(['dist/*']);
 });
 
 // Minify and Uglify
-gulp.task('minify', function() {
+gulp.task('minify', ['move'], function() {
   gulp.src('./css/app.css')
   .pipe($.minifyCss())
   .pipe(gulp.dest('./dist/css'));
@@ -74,8 +74,8 @@ gulp.task('minify', function() {
 });
 
 // Move the needed files and folders into a dist folder which can be deployed to the webserver
-gulp.task('move', ['clean', 'minify'], function() {
-  gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html', './assets/**/*.*', './.htaccess', './assets/'], { base: './' })
+gulp.task('move', ['clean'], function() {
+  gulp.src(['./bower_components/**/*.*', './css/**/*.*', './js/**/*.*', './*.html', './assets/**/*.*', './.htaccess', './fonts/**/*.*'], { base: './' })
   .pipe(gulp.dest('dist'));
 });
 
@@ -104,6 +104,7 @@ gulp.task('browser-sync', ['coffee', 'controllers', 'coffee-plugins', 'less'], f
 gulp.task('pre-prepare', function() {
   gulp.src(['./bower_components/bootstrap/js/**/*.*/'], {base: './bower_components/bootstrap/js'})
   .pipe(gulp.dest('js'));
+  return pre;
 });
 
 // Copy fonts folder to the root project folder
@@ -112,12 +113,12 @@ gulp.task('font-prepare', function() {
   .pipe(gulp.dest('fonts'));
 });
 
-//Start pre-prepare/font-prepare tasks
+// Delete the tests folder from js
+// and start pre-prepare/font-prepare tasks
 gulp.task('prepare', ['pre-prepare', 'font-prepare']);
 
-
 // FINAL TASKS
-gulp.task('dist', ['clean', 'move']);
+gulp.task('dist', ['minify']);
 
 gulp.task('default', ['browser-sync'], function() {
   gulp.watch('./coffeescript/*.coffee', ['coffee']);
